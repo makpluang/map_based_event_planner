@@ -13,11 +13,29 @@ const checkpoint_schema = new mongoose.Schema(
         require: "Content is Required"
     
     },
+    title:
+    {
+        type: String,
+        require: "Content is Required"
+    },
     about:
     {
         type: String,
         require: "Content is Required"
     },
+    addedby: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    rating:{
+        type:Number
+    },
+    date:{
+         type: Date, default: Date.now 
+        },
+    meta: [
+        Object
+    ],
     image:
     {
         type:String

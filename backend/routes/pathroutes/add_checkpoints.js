@@ -10,6 +10,9 @@ router.post("/add",async(req,res)=>{
     if(user[0].issuperAdmin)
     {
        const newcheckpoints = new Checkpoint(req.body);
+       //I have to add added by dynamically here ,in cases I have created token based authrization
+       //and I wiil have to extract property of logged in admin from auth-token
+       newcheckpoints.addedby=user[0]
        try 
        {
           const savedCheckpoint = await newcheckpoints.save();
