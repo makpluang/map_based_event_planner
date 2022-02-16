@@ -6,6 +6,8 @@ const authRoute = require('./routes/authroute/auth');
 const checkpointsRoute = require('./routes/pathroutes/add_checkpoints');
 const pathsroutes=require('./routes/pathroutes/all_paths')
 const pathroute=require('./routes/pathroutes/add_path')
+const config=require('../src/config')
+
 
 //database connections
 require('./db/mongoose');
@@ -23,5 +25,5 @@ app.use('/api/paths',pathsroutes);//this is path exposed for assigning to the co
 
 
 //listening to server 
-app.listen(3000, () => console.log('Server up and running'));
+app.listen(config.PORT, () => console.log(`Server up and running on ${config.PORT}`));
 

@@ -5,6 +5,7 @@ const verifyy = require("../../toolbox/helpers/verifyToken");
 const jwt = require("jsonwebtoken");
 const checkpoints = require("../../toolbox/models/CheckPoints/checkpoints");
 const Errors=require('../../toolbox/errors')
+const config=require('../../config')
 const {
   UnAuthorisedError, BadRequest, STATUS_CODES, ErrorCodes,
 } = Errors;
@@ -14,7 +15,7 @@ const {
 router.post("/add",verifyy,async(req,res)=>{
     const token =req.body.token || req.query.token || req.headers["auth-token"];
 
-    const decode = jwt.verify(token, "thisismysecret");
+    const decode = jwt.verify(token, config.JWT_TOKEN_SECRET);
     const user = await User.findById({ _id: decode._id });
     if(user.issuperAdmin)
     {
@@ -51,7 +52,7 @@ router.get("/", verifyy, async (req, res) => {
  //get particular checkpoints
  router.get("/:id", verifyy, async (req, res) => {
    const token =req.body.token || req.query.token || req.headers["auth-token"];
-   const decode = jwt.verify(token,  "thisismysecret");
+   const decode = jwt.verify(token,  config.JWT_TOKEN_SECRET);
    const user = await User.findById({ _id: decode._id });
    if(user.issuperAdmin)
    {
@@ -83,7 +84,7 @@ router.get("/", verifyy, async (req, res) => {
 //update checkpoint
 router.put("/:id", verifyy, async (req, res) => {
    const token =req.body.token || req.query.token || req.headers["auth-token"];
-     const decode = jwt.verify(token,  "thisismysecret");
+     const decode = jwt.verify(token,  config.JWT_TOKEN_SECRET);
      const user = await User.findById({ _id: decode._id });
    if (user.issuperAdmin) {
      try {
@@ -122,7 +123,7 @@ as to show user that we have deleted data, if we will find chekcpoints.isdeleted
 */
 router.delete("/:id", verifyy, async (req, res) => {
    const token =req.body.token || req.query.token || req.headers["auth-token"];
-     const decode = jwt.verify(token,  "thisismysecret");
+     const decode = jwt.verify(token, config.JWT_TOKEN_SECRET);
      const user = await User.findById({ _id: decode._id });
    if (user.issuperAdmin) {
      try {

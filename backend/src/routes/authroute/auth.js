@@ -3,6 +3,7 @@ const User = require("../../toolbox/models/Admin/admin");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const {BadRequest, STATUS_CODES}=require('../../toolbox/errors')
+const config=require('../../config')
 
 //register admin
 /*for now all admin are getting registered as super admin but in future this route will be changed as 
@@ -14,7 +15,7 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
-      "thisismysecret"
+      config.JWT_TOKEN_SECRET
     ).toString(),
   });
   try {
@@ -33,7 +34,8 @@ router.post("/login", async (req, res) => {
     {
       res.send("User with given information do not exists!")
     }
-    const bytes = CryptoJS.AES.decrypt(user.password, "thisismysecret");
+    
+    const bytes = CryptoJS.AES.decrypt(user.password,  config.JWT_TOKEN_SECRET);
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
     if(originalPassword !== req.body.password){
 
@@ -41,7 +43,7 @@ router.post("/login", async (req, res) => {
     } 
       
 
-    const token = jwt.sign({ _id: user._id},"thisismysecret");
+    const token = jwt.sign({ _id: user._id}, config.JWT_TOKEN_SECRET);
 
     
     res.header("auth-token",token).send(token).toString();

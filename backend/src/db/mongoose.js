@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://kanhaiya:asqPXt5aaYPZO4Jx@cluster0.xzm7l.mongodb.net/new_hackathon?retryWrites=true&w=majority', {
+const config=require('../config')
+mongoose.connect(config.Mongo_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
