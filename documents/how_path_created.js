@@ -92,3 +92,33 @@ https://apis.mapmyindia.com/advancedmaps/v1/<licence_key>/
 route?start=laa,loo & destination=lae,loe& viapoints={ch1la},{ch1lo}|{ch2la},{ch2lo} | {ch3la},{ch3lo} | {ch4la},{ch4lo}
 
 */
+
+/*
+{
+    "_id": "620a7cbbc710458b9809dcb1",
+    "route": [
+    {
+    "_id": "620a7a99aade24147cec2fcd",
+    "lattitude": "la4",
+    "longitude": "lo4",
+    "about": "this is my gilrs hostel",
+    "image": "https://github.com/mak-ux/Alumini_Tracking_System",
+    "isassigned": false,
+    "__v": 0
+    },
+    {
+    "_id": "620a7ab7aade24147cec2fd0",
+    "lattitude": "la1",
+    "longitude": "lo1",
+    "about": "this is boys hostel",
+    "image": "https://github.com/mak-ux/Alumini_Tracking_System",
+    "isassigned": false,
+    "__v": 0
+    }
+    ],
+    "isassigned": false,
+    "__v": 0
+
+    }
+
+*/

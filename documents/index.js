@@ -68,5 +68,15 @@ b. administartor has created multiple path in the paths database
 
 */
 
+/*
 
+{
+    "lattitude":"la901",
+    "longitude":"lo901",
+    "title":"this is house",
+    "about":"this is my house",
+    "rating":"10",
+    "image":"https://www.youtube.com/watch?v=az2_o1pkLgo"
+}
+*/
 

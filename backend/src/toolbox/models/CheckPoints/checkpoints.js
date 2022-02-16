@@ -45,6 +45,11 @@ const checkpoint_schema = new mongoose.Schema(
         type: Boolean, 
         default: false
         
+    },
+    isdeleted:{
+
+        type: Boolean, 
+        default: false
     }
 });
 
