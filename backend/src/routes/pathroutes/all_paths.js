@@ -5,6 +5,7 @@ const User=require('../../toolbox/models/Admin/admin')
 const veriffy=require('../../toolbox/helpers/verifyToken')
 const jwt = require("jsonwebtoken");
 const Errors=require('../../toolbox/errors')
+const config=require('../../config')
 const {
   UnAuthorisedError, BadRequest, STATUS_CODES
 } = Errors;
@@ -23,7 +24,7 @@ router.post("/add/:rout",veriffy,async(req,res)=>{
     try{
 
       const token =req.body.token || req.query.token || req.headers["auth-token"];
-      const decode = jwt.verify(token, "thisismysecret");
+      const decode = jwt.verify(token, config.JWT_TOKEN_SECRET);
       const user = await User.findById({ _id: decode._id });
    
       if(user.issuperAdmin)
@@ -72,7 +73,7 @@ router.post("/add/:rout",veriffy,async(req,res)=>{
     try{
 
       const token =req.body.token || req.query.token || req.headers["auth-token"];
-      const decode = jwt.verify(token, "thisismysecret");
+      const decode = jwt.verify(token, config.JWT_TOKEN_SECRET);
       const user = await User.findById({ _id: decode._id });
    
       if(user.issuperAdmin)
@@ -94,18 +95,26 @@ router.post("/add/:rout",veriffy,async(req,res)=>{
   })
 
   //assign path randomly to the current user
-  router.get('/pathtofollow',async(req,res)=>{
+  router.get('/pathtofollow/:start/:end',async(req,res)=>{
 
     try{
 
      
+        const startPoint=req.params.start;
+        const endPoint=req.params.end;
         const allpaths=await AllPaths.find();
         var randomIndex2 = Math.floor(Math.random() * allpaths.length);
         var randomly_selected_paths = allpaths[randomIndex2];
         const MultipleRandomRoutes=randomly_selected_paths.routes
         var random_index = Math.floor(Math.random() * MultipleRandomRoutes.length);
         var randomPath = MultipleRandomRoutes[random_index];
-        res.send(randomPath)
+        //here I am sending data for the ease of front-end itegration
+        //Idea is to send complete path start+waypoints+end
+        var newPathObject = new Object();
+        newPathObject.start = startPoint;
+        newPathObject.end= endPoint;
+        newPathObject.paths = randomPath;
+        res.send(newPathObject)
     
        
     }
