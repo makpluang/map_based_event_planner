@@ -8,8 +8,9 @@ https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
 
 Example:
 
-Start Location = Delhi
-End Location.  =Mumbai
+1. Start Location = Delhi
+2. End Location.  =Mumbai
+
 
 You can hit API to get the checkpoints as:-
 
@@ -56,6 +57,8 @@ Just copy the added by _id from above data and paste it in place of {admin_id}
 https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
 
 # Example:-
+
+admin_id=620d21cc00dfbc6f0173b3b3
 
 https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 
