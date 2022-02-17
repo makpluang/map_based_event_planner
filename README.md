@@ -27,7 +27,9 @@ https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
 
 
 
-Now you are gettign addedby as ID
+Now you can see above ,you are getting only _id of the person ,who added the checkpoint.
+You can hit below API for getting the complete info of the person who added the checkpoints
+
 
 # So you can acess,who created this checkpoint by hitting the API :-
 
