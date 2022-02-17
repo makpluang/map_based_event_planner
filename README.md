@@ -45,7 +45,7 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 
 # Response 👇
 
-# Data formate is shwon Below:-
+# Data formate is shown Below:-
 
 <img width="1440" alt="single_response" src="https://user-images.githubusercontent.com/98042683/154497141-9770fc26-5e59-43f3-a259-0a7d77064f43.png">
 
@@ -63,11 +63,22 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 ### Note:-
 
 1. You can also pass lattitude and longitude of the start and end locations ,instead of just passing place name.
-2. Isdeleted filed has been added to schema as in real scenerio I am deleting data just updating the status as true.
+2. isdeleted field has been added to schema as in real scenerio I am deleting data just updating the status as true.
    purpose to not deleting data is as administrator may need this data in fututre or someone may hit delete route by mistake.
 3. There are multiple path are available but API will randomly select one path for the requested user.
 4. Authenticated admin will be able to create path,see path,add checkpoints,update,delete and so other operations.
    
 
 
+## In case you want to use it locally 
 
+1. Clone repo and before installing anything run following command 
+2. npm -v(8.3.1)
+3. node -v(v17.4.0)
+4. Finally if all version satisfied,just run
+5. npm install
+6. now, npm start.
+
+you are good to go.
+
+Thanks for visiting this repo.
