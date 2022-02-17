@@ -69,7 +69,7 @@ b. administartor has created multiple path in the paths database
 */
 
 /*
-
+formate of adding check points via postman
 {
     "lattitude":"la901",
     "longitude":"lo901",
@@ -78,5 +78,130 @@ b. administartor has created multiple path in the paths database
     "rating":"10",
     "image":"https://www.youtube.com/watch?v=az2_o1pkLgo"
 }
+
+
 */
 
+//http://localhost:3000/api/paths/pathtofollow/{start}/{end}
+/*
+Below you can see ,how tha data is being send from backend
+
+{
+"start": "Delhi",
+"end": "Mumbai",
+"paths": {
+"_id": "620d252f00dfbc6f0173b3d6",
+"route": [
+{
+"_id": "620d225f00dfbc6f0173b3b7",
+"lattitude": "-7.09718",
+"longitude": "-100.77319",
+"title": "Taj Hotel",
+"about": "This is famous Taj hotel of Varansi,",
+"rating": 10,
+"meta": [],
+"image": "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+"isassigned": false,
+"isdeleted": false,
+"date": "2022-02-16T16:12:15.789Z",
+"addedby": "620d21cc00dfbc6f0173b3b3",
+"__v": 0
+},
+{
+"_id": "620d237d00dfbc6f0173b3c6",
+"lattitude": "-50.36920",
+"longitude": "80.04996",
+"title": "Diamond Palace",
+"about": "Diamon palace of this state, this always attracts tourists",
+"rating": 9,
+"meta": [],
+"image": "https://www.youtube.com/watch?v=az2_o1pkLgo",
+"isassigned": false,
+"isdeleted": false,
+"date": "2022-02-16T16:17:01.476Z",
+"addedby": "620d21cc00dfbc6f0173b3b3",
+"__v": 0
+},
+{
+"_id": "620d243c00dfbc6f0173b3c9",
+"lattitude": "-47.78666",
+"longitude": "-49.89267",
+"title": "HB1 boys hostel",
+"about": "This is famous boys hostel of BHU ",
+"rating": 9,
+"meta": [],
+"image": "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+"isassigned": false,
+"isdeleted": false,
+"date": "2022-02-16T16:20:12.477Z",
+"addedby": "620d21cc00dfbc6f0173b3b3",
+"__v": 0
+},
+{
+"_id": "620d247c00dfbc6f0173b3cc",
+"lattitude": "-11.21692",
+"longitude": "53.75368",
+"title": "Sea graden",
+"about": "This is famous garden of this country ",
+"rating": 9,
+"meta": [],
+"image": "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+"isassigned": false,
+"isdeleted": false,
+"date": "2022-02-16T16:21:16.343Z",
+"addedby": "620d21cc00dfbc6f0173b3b3",
+"__v": 0
+},
+{
+"_id": "620d24e600dfbc6f0173b3cf",
+"lattitude": "-14.86310",
+"longitude": "-64.94591",
+"title": "IIITM Building",
+"about": "This building belong to IIITM and this is the most beautiful hostel building among all the IIITs",
+"rating": 10,
+"meta": [],
+"image": "https://i.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI",
+"isassigned": false,
+"isdeleted": false,
+"date": "2022-02-16T16:23:02.285Z",
+"addedby": "620d21cc00dfbc6f0173b3b3",
+"__v": 0
+}
+],
+"isassigned": false,
+"isdeleted": false,
+"__v": 0
+}
+}
+
+
+*/
+//http://localhost:3000/api/admin/{_id}
+/*
+As in above case you are getting ,added by as object id so you can acess this route to get Added by info
+you can see ,how data is coming from backend
+
+{
+"_id": "620d21cc00dfbc6f0173b3b3",
+"name": "kanhaiya",
+"email": "kanhaiya@iiitmanipur.ac.in",
+"password": "U2FsdGVkX187aFyY5jhd7ZalIABkezgQCkZy6/56Qzo=",
+"issuperAdmin": true,
+"__v": 0
+}
+
+*/
+
+/*
+Post Routes
+http://localhost:3000/api/admins/register
+http://localhost:3000/api/admins/login
+http://localhost:3000/api/checkpoints/add
+http://localhost:3000/api/path/create/:params
+http://localhost:3000/api/admins/register
+http://localhost:3000/api/paths/add/:params
+
+
+
+
+*/

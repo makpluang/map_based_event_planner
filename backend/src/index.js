@@ -7,7 +7,7 @@ const checkpointsRoute = require('./routes/pathroutes/add_checkpoints');
 const pathsroutes=require('./routes/pathroutes/all_paths')
 const pathroute=require('./routes/pathroutes/add_path')
 const config=require('../src/config')
-
+const adminInfo=require('../src/routes/AdminInforoute/adminInfo')
 
 //database connections
 require('./db/mongoose');
@@ -22,7 +22,7 @@ app.use('/api/path',pathroute)//this is total path created
 app.use('/api/paths',pathsroutes);//this is path exposed for assigning to the coming user
 //startegy to assign path is selecting random path from api/paths and assign to the map end point
 //along with start and end point
-
+app.use('/api/admin',adminInfo);
 
 //listening to server 
 app.listen(config.PORT, () => console.log(`Server up and running on ${config.PORT}`));

@@ -22,7 +22,8 @@ const admin_schema = new mongoose.Schema(
         min:6,
         max:1024,
     },
-    issuperAdmin: { type: Boolean, default: true }
+    issuperAdmin: { type: Boolean, default: true },
+    isdeleted: { type: Boolean, default: false}
     
 });
 
