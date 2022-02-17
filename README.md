@@ -65,6 +65,8 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 1. You can also pass lattitude and longitude of the start and end locations ,instead of just passing place name.
 2. Isdeleted filed has been added to schema as in real scenerio I am deleting data just updating the status as true.
    purpose to not deleting data is as administrator may need this data in fututre or someone may hit delete route by mistake.
+3. There are multiple path are available but API will randomly select one path for the requested user.
+4. Authenticated admin will be able to create path,see path,add checkpoints,update,delete and so other operations.
    
 
 
