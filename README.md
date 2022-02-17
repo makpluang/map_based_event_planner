@@ -30,6 +30,15 @@ https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
 Now you can see above ,you are getting only _id of the person ,who added the checkpoint.
 You can hit below API for getting the complete info of the person who added the checkpoints
 
+# Explanations:
+
+Above API returning objects having 👇
+
+1. start locations added by you/user.
+2. end locations added by you/user.
+3. There are two checkpoints/waypoints created by admin.
+
+Now you need who added this checkpoint but you already know his user _id right?
 
 # So you can acess,who created this checkpoint by hitting the API :-
 
@@ -63,7 +72,7 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 ### Note:-
 
 1. You can also pass lattitude and longitude of the start and end locations ,instead of just passing place name.
-2. isdeleted field has been added to schema as in real scenerio I am deleting data just updating the status as true.
+2. isdeleted field has been added to schema because as in real scenerio I am not deleting data just updating the status as true.
    purpose to not deleting data is as administrator may need this data in fututre or someone may hit delete route by mistake.
 3. There are multiple path are available but API will randomly select one path for the requested user.
 4. Authenticated admin will be able to create path,see path,add checkpoints,update,delete and so other operations.
@@ -82,3 +91,4 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 you are good to go.
 
 Thanks for visiting this repo.
+
