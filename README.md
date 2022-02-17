@@ -7,11 +7,15 @@ https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/{start_locations}/{End
 https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
 
 Example:
+
 Start Location = Delhi
 End Location.  =Mumbai
 
 You can hit API to get the checkpoints as:-
+
 https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
+
+# Response 👇
 
 # Data will look like below:-
 
@@ -54,6 +58,8 @@ https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
 # Example:-
 
 https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
+
+# Response 👇
 
 # Data formate is shwon Below:-
 
