@@ -20,33 +20,12 @@ https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
 
 # Data will look like below:-
 
-{
-    "start": "Delhi",
-    "end": "Mumbai",
-    "paths": {
-              "_id": "620d229800dfbc6f0173b3bb",
-              "route": [
-                          {
-                              "_id": "620d225f00dfbc6f0173b3b7",
-                              "lattitude": "-7.09718",
-                              "longitude": "-100.77319",
-                              "title": "Taj Hotel",
-                              "about": "This is famous Taj hotel of Varansi,",
-                              "rating": 10,
-                              "meta": [],
-                              "image": "https://www.youtube.com/watch?v=az2_o1pkLgo",
-                              "isassigned": false,
-                              "isdeleted": false,
-                              "date": "2022-02-16T16:12:15.789Z",
-                              "addedby": "620d21cc00dfbc6f0173b3b3",
-                              "__v": 0
-                          }
-              ],
-              "isassigned": false,
-              "isdeleted": false,
-              "__v": 0
-    }
-}
+<img width="1098" alt="full_name" src="https://user-images.githubusercontent.com/98042683/154496979-172fa6f0-55a6-4f18-bccf-fa5f70eb029f.png">
+
+
+
+
+
 
 Now you are gettign addedby as ID
 
@@ -66,15 +45,9 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 
 # Data formate is shwon Below:-
 
-{
-  "isdeleted": false,
-  "_id": "620d21cc00dfbc6f0173b3b3",
-  "name": "kanhaiya",
-  "email": "kanhaiya@iiitmanipur.ac.in",
-  "password": "U2FsdGVkX187aFyY5jhd7ZalIABkezgQCkZy6/56Qzo=",
-  "issuperAdmin": true,
-  "__v": 0
-}
+<img width="1440" alt="single_response" src="https://user-images.githubusercontent.com/98042683/154497141-9770fc26-5e59-43f3-a259-0a7d77064f43.png">
+
+
 
 ## Note:-
 
