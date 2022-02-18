@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, CardBody, CardImg, CardTitle, CardText } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 

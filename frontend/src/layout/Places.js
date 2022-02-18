@@ -13,7 +13,7 @@ const Places = () => {
                     Upcoming Places
                 </CardTitle>
                { placesData.route.map((place) => 
-                    < PlaceCard place={place} key={place.id} />)
+                    < PlaceCard place={place} key={place._id} />)
                 }
               
             </CardBody>
