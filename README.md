@@ -80,6 +80,9 @@ so we will hit API as :-
 
 https://kanhaiyaproj.herokuapp.com/api/distance/Delhi/Gurgaon
 
+This API is yet not deployed but working locally.
+
+http://localhost:3000/api/distance/Delhi/Gurgaon
 
 ## Response will look like 👇
 
