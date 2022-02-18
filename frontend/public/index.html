@@ -15,6 +15,16 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <script src="https://apis.mapmyindia.com/advancedmaps/v1/%REACT_APP_MAP_TOKEN%/map_load?v=1.5"></script>
+    <script src="https://apis.mapmyindia.com/advancedmaps/api/%REACT_APP_MAP_KEY%/map_sdk_plugins"></script>
+
+    <style> 
+      #root { position: relative;} 
+      .mapContainer {position: absolute; top:0; right:0; width: 60%;}
+      #map {padding: 0;width: 100%;height: 100vh; }
+      
+       </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
