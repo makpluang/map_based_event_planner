@@ -6,7 +6,7 @@ import path from "../data"
 
 const MapLayout = () =>{
     return(
-        <Card>
+        <Card className="map-column">
             <CardBody>
                 <Map path={path} />
             </CardBody>

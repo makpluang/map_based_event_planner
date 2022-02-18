@@ -14,13 +14,29 @@ body {
     border: none;
 }
 
+.card-body{
+    padding: 1rem 0;
+}
+
+.route-column, .place-column, .map-column {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/*********************
+Route Column
+**********************/
+.route-column .card-body{
+    padding-left: 1rem;
+}
+
+
 /**********************
  Place column
  *********************/
 
- .place-column {
-     height: 100vh;
-     overflow-y: scroll;
+ .place-card {
+     padding: 0 1rem;
  }
 
 .place-card-img{
@@ -40,3 +56,14 @@ body {
     color:green;
     font-size: 12px;
 }
+
+/*************
+Map Column 
+*************/
+
+#map {
+    padding: 0;
+    width: 100%;
+    border-radius: 15px;
+    height: 100vh;
+ }
