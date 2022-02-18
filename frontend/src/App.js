@@ -1,11 +1,12 @@
 
-import Map from "./component/Map";
-import path from "./data"
+import React from "react";
+
+import AppLayout from "./layout";
 
 function App() {
   return (
     <div className="App">
-     < Map  path={path} />
+     <AppLayout />
     </div>
   );
 }
