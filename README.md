@@ -59,6 +59,35 @@ https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 <img width="1440" alt="single_response" src="https://user-images.githubusercontent.com/98042683/154497141-9770fc26-5e59-43f3-a259-0a7d77064f43.png">
 
 
+# Calculating travel time and Travel Distance between two check-points
+
+From above API we have starting and ending locations and now we want to calculate :-
+
+1. what is the estimated distance between current checkpoint and upcoming checkpoints
+2. What is the estimated travel time between current checkpoint and upcoming checkpoints 
+
+We can calculate above using the below API :- 
+
+https://kanhaiyaproj.herokuapp.com/api/distance/{current_checkpoint}/{upcoming_checkpoint}
+
+## Example
+
+suppose my current location/checkpoint is = Delhi
+
+My upcoming checkpoint is = Gurgaon
+
+so we will hit API as :- 
+
+https://kanhaiyaproj.herokuapp.com/api/distance/Delhi/Gurgaon
+
+
+## Response will look like 👇
+
+
+
+<img width="526" alt="Screenshot 2022-02-18 at 4 21 10 PM" src="https://user-images.githubusercontent.com/98042683/154670115-fd9ac732-340a-4b63-bc7a-570cb9e7ee59.png">
+
+
 
 ## Note:-
 
