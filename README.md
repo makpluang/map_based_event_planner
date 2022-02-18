@@ -121,7 +121,7 @@ https://bootcamppluangproject.herokuapp.com/api/distance/Delhi/Gurgaon
 ## Note
 
 This repo has not been deployed, backend clone of this service has been deployed.
-As for deployement purpose we need to some changed in repo so I avoid to play and deploy this repo.
+As for deployement purpose we need to make some changed in repo ,as setup of config file so I avoided to play and deploy this repo.
 
 
 you are good to go.
