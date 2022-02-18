@@ -13,3 +13,21 @@ body {
 .card {
     border: none;
 }
+
+.place-card-img{
+    border-radius: 15px;
+}
+
+.place-card .rating-icon{
+    background-color: aquamarine;
+    width: 8px;
+    height: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.place-card .rating-icon .rating-icon-font{
+    color:green;
+    font-size: 12px;
+}
