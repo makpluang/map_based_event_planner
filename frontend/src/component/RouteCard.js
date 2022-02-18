@@ -5,14 +5,16 @@ import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 
 const RouteCard = ({route}) => {
     return (
-        <Card className="route-card">
+        <Card className={`route-card ${route.title === "Gurgaon" && `active`}`}>
             <CardBody>
                 <CardTitle tag="h6" className="mt-3 mb-2">
-                    <FontAwesomeIcon icon={faDiamondTurnRight} />
+                    <FontAwesomeIcon icon={faDiamondTurnRight} className="route-icon" />
                     {route.title}
                 </CardTitle>
                 <CardText className="text-muted">
-                    {route.about}
+                    <h6>Distance: </h6>
+                    <h6>Estimated Arrival:</h6>
+        
                 </CardText>
             </CardBody>
         </Card>

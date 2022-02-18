@@ -9,13 +9,13 @@ import PlacesColumn from "./Places";
 const Layout = () =>{
 return(
     <Row >
-        <Col>
+        <Col xs={3} >
             <RoutesColumn />
         </Col>
-        <Col> 
+        <Col xs={5} > 
             <MapColumn />
         </Col>
-        <Col>
+        <Col xs={4}>
             <PlacesColumn />
         </Col>
     </Row>
