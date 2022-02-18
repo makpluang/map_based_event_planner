@@ -56,7 +56,8 @@ https://bootcamppluangproject.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 
 # Data formate is shown Below:-
 
-<img width="1440" alt="single_response" src="https://user-images.githubusercontent.com/98042683/154497141-9770fc26-5e59-43f3-a259-0a7d77064f43.png">
+
+<img width="1440" alt="data" src="https://user-images.githubusercontent.com/98042683/154678626-cd04a64d-7cd2-4d76-bb52-02f331ddc69d.png">
 
 
 # Calculating travel time and Travel Distance between two check-points
