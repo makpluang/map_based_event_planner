@@ -1,17 +1,22 @@
-import { Row, Col} from "reactstrap"
+import { Row, Col} from "reactstrap";
 
-import MapLayout from "./MapLayout"
+import MapColumn from "./MapLayout";
+import RoutesColumn from "./Routes";
+import PlacesColumn from "./Places";
+
 
 
 const Layout = () =>{
 return(
     <Row >
         <Col>
+            <RoutesColumn />
         </Col>
         <Col> 
-            <MapLayout />
+            <MapColumn />
         </Col>
         <Col>
+            <PlacesColumn />
         </Col>
     </Row>
 )

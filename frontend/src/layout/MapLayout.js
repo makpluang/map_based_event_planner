@@ -1,4 +1,4 @@
-import { Card } from "reactstrap"
+import { Card, CardBody } from "reactstrap"
 
 import Map from "../component/Map"
 
@@ -7,7 +7,9 @@ import path from "../data"
 const MapLayout = () =>{
     return(
         <Card>
-            <Map path={path} />
+            <CardBody>
+                <Map path={path} />
+            </CardBody>
         </Card>
     )
 }
