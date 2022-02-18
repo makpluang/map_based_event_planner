@@ -2,9 +2,9 @@
 This is repo is regarding the boocamp project
 
 # Publically available API
-https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/{start_locations}/{End_locations}
-
-https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
+https://bootcamppluangproject.herokuapp.com/api/paths/pathtofollow/{Start_Locatio}/{End_Location}
+https://bootcamppluangproject.herokuapp.com/api/admin/{Admin_Id}
+https://bootcamppluangproject.herokuapp.com/api/distance/{Current_Checkpoint}/{Upcoming_Checkpoint}
 
 Example:
 
@@ -14,7 +14,7 @@ Example:
 
 You can hit API to get the checkpoints as:-
 
-https://kanhaiyaproj.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
+https://bootcamppluangproject.herokuapp.com/api/paths/pathtofollow/Delhi/Mumbai
 
 # Response 👇
 
@@ -50,7 +50,7 @@ https://kanhaiyaproj.herokuapp.com/api/admin/{admin_id}
 
 admin_id=620d21cc00dfbc6f0173b3b3
 
-https://kanhaiyaproj.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
+https://bootcamppluangproject.herokuapp.com/api/admin/620d21cc00dfbc6f0173b3b3
 
 # Response 👇
 
@@ -78,11 +78,8 @@ My upcoming checkpoint is = Gurgaon
 
 so we will hit API as :- 
 
-https://kanhaiyaproj.herokuapp.com/api/distance/Delhi/Gurgaon
+https://bootcamppluangproject.herokuapp.com/api/distance/Delhi/Gurgaon
 
-This API is yet not deployed but working locally.
-
-http://localhost:3000/api/distance/Delhi/Gurgaon
 
 ## Response will look like 👇
 
