@@ -117,6 +117,13 @@ https://bootcamppluangproject.herokuapp.com/api/distance/Delhi/Gurgaon
 5. npm install
 6. now, npm start.
 
+
+## Note
+
+This repo has not been deployed, backend clone of this service has been deployed.
+As for deployement purpose we need to some changed in repo so I avoid to play and deploy this repo.
+
+
 you are good to go.
 
 Thanks for visiting this repo.
