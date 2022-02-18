@@ -14,6 +14,15 @@ body {
     border: none;
 }
 
+/**********************
+ Place column
+ *********************/
+
+ .place-column {
+     height: 100vh;
+     overflow-y: scroll;
+ }
+
 .place-card-img{
     border-radius: 15px;
 }
