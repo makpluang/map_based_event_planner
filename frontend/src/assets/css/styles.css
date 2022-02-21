@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,700;1,800&display=swap');
+
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    border: none;
+}
+
+.card-body{
+    padding: 1rem 0;
+}
+
+.route-column, .place-column, .map-column {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/*********************
+Route Column
+**********************/
+
+.route-column .card-body{
+    padding-left: 1rem;
+}
+
+.route-icon {
+    color:blue;
+    margin-right: 5px;;
+}
+
+
+.route-card.active {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background-color: #fafafa;
+}
+
+
+/**********************
+ Place column
+ *********************/
+
+ .place-card {
+     padding: 0 1rem;
+ }
+
+.place-card-img{
+    border-radius: 15px;
+}
+
+.place-card .rating-icon{
+    background-color: aquamarine;
+    width: 8px;
+    height: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.place-card .rating-icon .rating-icon-font{
+    color:green;
+    font-size: 12px;
+}
+
+/*************
+Map Column 
+*************/
+
+#map {
+    padding: 0;
+    width: 100%;
+    border-radius: 15px;
+    height: 100vh;
+ }
