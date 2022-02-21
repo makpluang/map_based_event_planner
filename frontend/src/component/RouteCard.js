@@ -3,9 +3,10 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 
-const RouteCard = ({route}) => {
+const RouteCard = ({route, upcomingId, id}) => {
+    console.log(id, upcomingId)
     return (
-        <Card className={`route-card ${route.title === "Gurgaon" && `active`}`}>
+        <Card className={`route-card ${id === upcomingId && `active`}`}>
             <CardBody>
                 <CardTitle tag="h6" className="mt-3 mb-2">
                     <FontAwesomeIcon icon={faDiamondTurnRight} className="route-icon" />
