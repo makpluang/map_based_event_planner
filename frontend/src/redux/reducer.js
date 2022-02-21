@@ -10,10 +10,12 @@ const initialState = {
 
 const pathReducer = (state= initialState, action) => {
     switch(action.type){
-        case GET_RANDOM_PATH: return{
+        case GET_RANDOM_PATH:
+        return{
             ...state,
             start: "28.4510342,77.0166822",
-            destination: "1T182A"
+            destination: "1T182A",
+            route: action.path
         }
         default: return state
     }

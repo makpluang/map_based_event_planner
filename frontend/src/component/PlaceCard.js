@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const PlaceCard = ({place}) => {
+
     return (
         <Card className="place-card">
             <CardBody>

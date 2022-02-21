@@ -1,36 +1,64 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 
-import { getRandomPath } from "../redux/action";
+import { getRandomPath, GET_RANDOM_PATH } from "../redux/action";
 
 const Map = ({path}) => {
 
   const [map, setMap] = useState("");
   const dispatch = useDispatch();
 
+  const store = useStore()
+  console.log(store.getState(), "Map store")
+
+  const state = useSelector(state => {
+    console.log(state, "selector")
+    return state
+  })
+  console.log(state)
+
   const {start, destination, route} = useSelector(state => state)
-  console.log(start, destination, route)
+  console.log(start, destination, route, "Map component")
+
+  useEffect (()=>{
+
+    const dispatchAction = async() =>{
+      const res = await getRandomPath()
+      console.log(res, "api data")
+   
+      dispatch({
+       type: GET_RANDOM_PATH,
+       path: res
+       })
+      }
+
+      dispatchAction()
+
+  },[dispatch])
 
   useEffect(() => {
-     dispatch(getRandomPath())
-      var centre = new window.L.LatLng(27.1762781, 77.9728989);
+    if(route.length){
+      var centre = new window.L.LatLng(start.split(",")[0], start.split(",")[1]);
       let mapObj = new window.MapmyIndia.Map("map", {
         center: centre,
         zoomControl: true,
         hybrid: true,
       });
       setMap(mapObj);
-  }, [dispatch]);
+      console.log("map load")
+    }
+  }, [route, start]);
 
   useEffect(() => {
     if (map) {
-      document.getElementById("geo0").click()
-      let curr_loc = window.MapmyIndia.current_location.join(",")
+      // console.log(map, start, destination, route)
+      // document.getElementById("geo0").click()
+      // let curr_loc = window.MapmyIndia.current_location.join(",")
       window.MapmyIndia.direction({
         map,
         start: start,
         end: { label: "India Gate, Delhi", geoposition: destination},
-        via: path.route.map((loc)=> {
+        via: route.map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
         routeColor: "#0000FF",

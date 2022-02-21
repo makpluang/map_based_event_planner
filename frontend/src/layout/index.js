@@ -1,5 +1,4 @@
 import { Row, Col} from "reactstrap";
-
 import MapColumn from "./MapLayout";
 import RoutesColumn from "./Routes";
 import PlacesColumn from "./Places";
@@ -16,7 +15,7 @@ return(
             <MapColumn />
         </Col>
         <Col xs={4}>
-            <PlacesColumn />
+            <PlacesColumn  />
         </Col>
     </Row>
 )

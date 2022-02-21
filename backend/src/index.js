@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 //add all routes
 const authRoute = require('./routes/authroute/auth');
@@ -18,6 +19,7 @@ require('./db/mongoose');
 //checking distance matrix wrapper
 
 //middlwares
+app.use(cors())
 app.use(express.json());
 app.use('/api/admins', authRoute);//adding admins
 app.use('/api/checkpoints', checkpointsRoute);//this route is reponsible for adding the new check points 
