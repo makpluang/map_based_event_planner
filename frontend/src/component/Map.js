@@ -38,7 +38,7 @@ const Map = ({path}) => {
         callback: () => console.log,
       });
     }
-  }, [map, path]);
+  }, [map, start, destination, path]);
 
   return <div className="mapContainer">
   <div id="map"></div>;

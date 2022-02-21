@@ -12,7 +12,8 @@ const Places = () => {
                 <CardTitle tag="h5">
                     Upcoming Places
                 </CardTitle>
-               { placesData.route.map((place) => 
+               { 
+                    placesData.route.map((place) => 
                     < PlaceCard place={place} key={place._id} />)
                 }
               
