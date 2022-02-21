@@ -1,6 +1,6 @@
 var distance = require('distance-matrix-api');
-
-distance.key('AlphaDMA3YmNfpQ1qd73HPM7xVgPA48J2ADMgFV9');
+const config=require('../../config')
+distance.key(config.DistanceMatrixKey);
 distance.units('imperial');
 var newDistance;
 

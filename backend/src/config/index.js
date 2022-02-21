@@ -1,4 +1,4 @@
-const { Mongo_URI } = require("./environment.development");
+const { Mongo_URI, DistanceMatrixKey } = require("./environment.development");
 
 const activeEnv = process.env.NODE_ENV || "development";
 const envFile = `./environment.${activeEnv}`;
@@ -8,7 +8,8 @@ const config = {
     env: env.ENV,
     PORT: env.PORT,
     JWT_TOKEN_SECRET: env.JWT_TOKEN_SECRET,
-    Mongo_URI:env.Mongo_URI
+    Mongo_URI:env.Mongo_URI,
+    DistanceMatrixKey:env.DistanceMatrixKey
 };
 
 module.exports = { ...config };

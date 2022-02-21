@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "distance-matrix-api": "^1.0.0",
     "express": "^4.17.2",
