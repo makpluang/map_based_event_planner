@@ -100,14 +100,15 @@ You can hit the API:-
 http://localhost:3000/api/distance/multi/start/{}/{}/{}/end/{}/{}/{}
 
 Example:-
-startlocation1=Delhi
-startlocation1=Mumbai
+1. startlocation1=Delhi
+2. startlocation1=Mumbai
 
-endlocation1=Maharastra
-endlocation1=UttarPradesh
+1. endlocation1=Maharastra
+2. endlocation1=UttarPradesh
 
 
 You will Call the API as:-
+
 http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/UttarPradesh
 
 Once you hit the API,you response will look like below:-
