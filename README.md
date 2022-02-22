@@ -5,6 +5,8 @@ This is repo is regarding the boocamp project
 https://bootcamppluangproject.herokuapp.com/api/paths/pathtofollow/{Start_Locatio}/{End_Location}
 https://bootcamppluangproject.herokuapp.com/api/admin/{Admin_Id}
 https://bootcamppluangproject.herokuapp.com/api/distance/{Current_Checkpoint}/{Upcoming_Checkpoint}
+http://localhost:3000/api/distance/multi/start/{start_loc1}/{start_loc2}/{start_loc3}/end/{end_loc1}/{end_loc2}/{end_loc3}
+
 
 Example:
 
@@ -87,6 +89,31 @@ https://bootcamppluangproject.herokuapp.com/api/distance/Delhi/Gurgaon
 
 
 <img width="526" alt="Screenshot 2022-02-18 at 4 21 10 PM" src="https://user-images.githubusercontent.com/98042683/154670115-fd9ac732-340a-4b63-bc7a-570cb9e7ee59.png">
+
+
+
+
+## Now in case you want distances between all the checkpoints(array of locations):-
+
+You can hit the API:-
+
+http://localhost:3000/api/distance/multi/start/{}/{}/{}/end/{}/{}/{}
+
+Example:-
+startlocation1=Delhi
+startlocation1=Mumbai
+
+endlocation1=Maharastra
+endlocation1=UttarPradesh
+
+
+You will Call the API as:-
+http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/UttarPradesh
+
+Once you hit the API,you response will look like below:-
+
+<img width="291" alt="Screenshot 2022-02-22 at 4 43 53 PM" src="https://user-images.githubusercontent.com/98042683/155125998-88b0a8e1-595d-4ffd-ad7f-9ab3af0fa87a.png">
+
 
 
 
