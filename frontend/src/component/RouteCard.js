@@ -5,10 +5,12 @@ import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 
 const RouteCard = ({route, upcomingId, id}) => {
     console.log(id, upcomingId)
+
+    const trackBallColor = route.traversed ? "#7CC1A7": (id === upcomingId) ?  "#C64C52" : "#98CFF4"
     return (
         <Card className={`route-card ${id === upcomingId && `active`}`}>
             <CardBody>
-                <span className="route-track-ball">
+                <span className="route-track-ball" style = {{ backgroundColor: trackBallColor}}>
                     
                 </span>
                 <CardTitle tag="h6" className="mt-3 mb-2">

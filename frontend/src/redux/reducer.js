@@ -30,7 +30,7 @@ const pathReducer = (state= initialState, action) => {
             const newRoute = state.route.map((checkpoint, ind) => {
                 return {
                     ...checkpoint,
-                    traversed : (ind ===state.currIndex) ? true: false
+                    traversed : (ind ===state.currIndex) ? true: checkpoint.traversed
                 }
             })
             console.log("set upcoming place", nextIndex)
