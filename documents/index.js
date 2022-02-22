@@ -205,3 +205,9 @@ http://localhost:3000/api/paths/add/:params
 
 
 */
+/*
+
+new end point 
+
+http://localhost:3000/api/distance/multi/start/{}/{}/{}/end/{}/{}/{}
+*/
