@@ -1,15 +1,35 @@
 import axios from "axios"
 
-export const GET_RANDOM_PATH="GET_RANDOM_PATH"
-export const SET_UPCOMING_PLACE="SET_UPCOMING_PLACE"
+import {
+    GET_RANDOM_PATH,
+    SET_UPCOMING_PLACE
+} from "./constant"
 
+const API = "http://localhost:3000/api/"
 
-export const getRandomPath = async() => {
-    const { data } = await axios.get("http://localhost:3000/api/paths/pathtofollow/Delhi/Mumbai")
-    console.log(data, "action file")
-    return data.paths.route
+const setRandomPath = (data, start)=>{
+    console.log(start, "action file")
+    return {
+        type: GET_RANDOM_PATH,
+        path: data,
+        start
+    }
 }
 
-export const checkUpcomingPlace = async() => {
-    
+export const getRandomPath = (start) => async(dispatch) => {
+    const { data } = await axios.get(`${API}paths/pathtofollow/${start}/Mumbai`)
+    console.log(data, "action file")
+    return dispatch(setRandomPath(data.paths.route, start))
+}
+
+
+export const checkUpcomingPlace = () => async(dispatch) => {
+    const { data } = await axios.get(`${API}/distance/Delhi/Mumbai`)
+    // return dispatch ({
+    //     type: SET_UPCOMING_PLACE
+    // })
+
+    console.log(data)
+
+
 }
