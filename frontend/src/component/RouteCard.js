@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
@@ -6,9 +6,17 @@ import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 const RouteCard = ({route, upcomingId, id}) => {
     console.log(id, upcomingId)
 
-    const trackBallColor = route.traversed ? "#7CC1A7": (id === upcomingId) ?  "#C64C52" : "#98CFF4"
+    useEffect (()=>{
+        if(id === upcomingId){
+            const card = document.getElementById(`route-${id}`)
+            console.log(card)
+            card.scrollIntoView()
+        }
+    },[id, upcomingId])
+
+    const trackBallColor = route.traversed ? "#4ABDAC": (id === upcomingId) ?  "#FC4A1A" : "#98CFF4"
     return (
-        <Card className={`route-card ${id === upcomingId && `active`}`}>
+        <Card className={`route-card ${id === upcomingId && `active`}`} id ={`route-${id}`}>
             <CardBody>
                 <span className="route-track-ball" style = {{ backgroundColor: trackBallColor}}>
                     
