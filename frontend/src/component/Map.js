@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getRandomPath } from "../redux/action";
+import { checkUpcomingPlace, getRandomPath } from "../redux/action";
 
 const Map = () => {
 
@@ -9,28 +9,33 @@ const Map = () => {
   const dispatch = useDispatch();
 
   const {start, destination, route} = useSelector(state => state)
-  console.log(start, destination, route, "Map component")
+  // console.log(start, destination, route, "Map component")
   const [userLocation, setUserLocation] = useState();
-
-
 
   const failureCallBack = (error) => {
     console.log("Error ===>", error);
   };
+
+  // setInterval(()=> {
+  //   dispatch(checkUpcomingPlace())
+  // }, 5000)
 
   useEffect (()=>{
 
     const successCallBack = (position) => {
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
-      console.log(latitude+","+longitude);
+      console.log(latitude+","+longitude, "map component");
       dispatch(getRandomPath(latitude+","+longitude))
     };
 
+    const options = { frequency: 3000 };
+
     if (window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(
+      window.navigator.geolocation.watchPosition(
         successCallBack,
-        failureCallBack
+        failureCallBack,
+        options
       );
     }
 

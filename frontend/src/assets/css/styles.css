@@ -37,12 +37,19 @@ Route Column
 }
 
 
-.route-card.active {
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+.route-card {
     border-radius: 15px;
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+.route-card.active{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-color: #fafafa;
+}
+
+.route-card:hover{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 

@@ -27,10 +27,18 @@ const pathReducer = (state= initialState, action) => {
       
         case SET_UPCOMING_PLACE: {
             const nextIndex = (state.currIndex + 1 < state.route.length) ? state.currIndex + 1 : state.route.length-1
+            const newRoute = state.route.map((checkpoint, ind) => {
+                return {
+                    ...checkpoint,
+                    traversed : (ind ===state.currIndex) ? true: false
+                }
+            })
+            console.log("set upcoming place", nextIndex)
             return {
                 ...state,
+                route: newRoute,
                 currIndex: nextIndex,
-                upcomingId: action.path[nextIndex]._id
+                upcomingId: state.route[nextIndex]._id
             }
         }
         default: return state
