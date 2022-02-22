@@ -97,21 +97,21 @@ https://bootcamppluangproject.herokuapp.com/api/distance/Delhi/Gurgaon
 
 You can hit the API:-
 
-http://localhost:3000/api/distance/multi/start/{}/{}/{}/end/{}/{}/{}
+http://localhost:3000/api/distance/multi/start/{start1}/{start2}/end/{end1}/{end2}
 
 Example:-
 1. startlocation1=Delhi
-2. startlocation1=Mumbai
+2. startlocation2=Mumbai
 
 1. endlocation1=Maharastra
-2. endlocation1=UttarPradesh
+2. endlocation2=UttarPradesh
 
 
 You will Call the API as:-
 
 http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/UttarPradesh
 
-Once you hit the API,you response will look like below:-
+### Once you hit the API,you response will look like below:-
 
 <img width="291" alt="Screenshot 2022-02-22 at 4 43 53 PM" src="https://user-images.githubusercontent.com/98042683/155125998-88b0a8e1-595d-4ffd-ad7f-9ab3af0fa87a.png">
 
