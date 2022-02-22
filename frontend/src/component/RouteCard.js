@@ -8,6 +8,9 @@ const RouteCard = ({route, upcomingId, id}) => {
     return (
         <Card className={`route-card ${id === upcomingId && `active`}`}>
             <CardBody>
+                <span className="route-track-ball">
+                    
+                </span>
                 <CardTitle tag="h6" className="mt-3 mb-2">
                     <FontAwesomeIcon icon={faDiamondTurnRight} className="route-icon" />
                     {route.title}

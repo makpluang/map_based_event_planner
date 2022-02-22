@@ -11,9 +11,18 @@ const Routes = () => {
                 <CardTitle tag="h5">
                     Routes
                 </CardTitle>
-                {route && route.map((dest) => 
+
+                <div className="route-info d-flex justify-content-start mt-2 ">
+                    <div className="route-track">
+
+                    </div>
+                    <div className="route-info-col flex-grow-1">
+                    {route && route.map((dest) => 
                     <RouteCard route={dest} key={dest._id} id ={dest._id} upcomingId={upcomingId} />  
-                )} 
+                    )} 
+                    </div>
+                </div>
+                
             </CardBody>
         </Card>
     )

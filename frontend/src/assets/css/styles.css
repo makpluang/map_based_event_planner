@@ -36,11 +36,36 @@ Route Column
     margin-right: 5px;;
 }
 
+.route-info{
+    position: relative;
+}
 
 .route-card {
     border-radius: 15px;
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+.route-track {
+    position: absolute;
+    height: 100%;
+    width: 18px;
+    border-radius: 50px;
+    background-color: #1C99E2;
+}
+
+.route-track-ball{
+    height:15px;
+    width:15px;
+    border-radius: 100%;
+    background-color: #98CFF4;
+    position: absolute;
+    left: -10%;
+    top:50%;
+}
+
+.route-info-col {
+    margin-left: 30px;
 }
 
 .route-card.active{
