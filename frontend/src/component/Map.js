@@ -1,38 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { getRandomPath, GET_RANDOM_PATH } from "../redux/action";
+import { checkUpcomingPlace, getRandomPath } from "../redux/action";
 
-const Map = ({path}) => {
+const Map = () => {
 
   const [map, setMap] = useState("");
   const dispatch = useDispatch();
 
-  const store = useStore()
-  console.log(store.getState(), "Map store")
-
-  const state = useSelector(state => {
-    console.log(state, "selector")
-    return state
-  })
-  console.log(state)
-
   const {start, destination, route} = useSelector(state => state)
-  console.log(start, destination, route, "Map component")
+  // console.log(start, destination, route, "Map component")
+  const [userLocation, setUserLocation] = useState();
+
+  const failureCallBack = (error) => {
+    console.log("Error ===>", error);
+  };
+
+  // setInterval(()=> {
+  //   dispatch(checkUpcomingPlace())
+  // }, 5000)
 
   useEffect (()=>{
 
-    const dispatchAction = async() =>{
-      const res = await getRandomPath()
-      console.log(res, "api data")
-   
-      dispatch({
-       type: GET_RANDOM_PATH,
-       path: res
-       })
-      }
+    const successCallBack = (position) => {
+      const { latitude, longitude } = position.coords;
+      setUserLocation(latitude+","+longitude);
+      console.log(latitude+","+longitude, "map component");
+      dispatch(getRandomPath(latitude+","+longitude))
+    };
 
-      dispatchAction()
+    const options = { frequency: 3000 };
+
+    if (window.navigator.geolocation) {
+      window.navigator.geolocation.watchPosition(
+        successCallBack,
+        failureCallBack,
+        options
+      );
+    }
 
   },[dispatch])
 
@@ -51,13 +56,12 @@ const Map = ({path}) => {
 
   useEffect(() => {
     if (map) {
-      // console.log(map, start, destination, route)
       // document.getElementById("geo0").click()
       // let curr_loc = window.MapmyIndia.current_location.join(",")
       window.MapmyIndia.direction({
         map,
         start: start,
-        end: { label: "India Gate, Delhi", geoposition: destination},
+        // end: { label: "India Gate, Delhi", geoposition: destination},
         via: route.map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
@@ -66,7 +70,7 @@ const Map = ({path}) => {
         callback: () => console.log,
       });
     }
-  }, [map, start, destination, path]);
+  }, [map, start, destination, route]);
 
   return <div className="mapContainer">
   <div id="map"></div>;

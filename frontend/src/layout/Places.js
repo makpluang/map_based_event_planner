@@ -5,7 +5,7 @@ import { Card, CardBody, CardTitle} from "reactstrap"
 import PlaceCard from "../component/PlaceCard";
 
 const Places = () => {
-    const {start, destination, route} = useSelector(state => state)
+    const {start, destination, route, upcomingId} = useSelector(state => state)
 
     return (
         <Card className="place-column">
@@ -15,7 +15,7 @@ const Places = () => {
                 </CardTitle>
                { 
                     route && route.map((place) => 
-                    < PlaceCard place={place} key={place._id} />)
+                    < PlaceCard place={place} key={place._id}  upcomingId={upcomingId}/>)
                 }
               
             </CardBody>
