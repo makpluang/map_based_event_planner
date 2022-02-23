@@ -8,7 +8,7 @@ const Map = () => {
   const [map, setMap] = useState("");
   const dispatch = useDispatch();
 
-  const {start, destination, route} = useSelector(state => state)
+  const {start, destination, currIndex, route} = useSelector(state => state)
   // console.log(start, destination, route, "Map component")
   const [userLocation, setUserLocation] = useState();
 
@@ -61,8 +61,8 @@ const Map = () => {
       window.MapmyIndia.direction({
         map,
         start: start,
-        // end: { label: "India Gate, Delhi", geoposition: destination},
-        via: route.map((loc)=> {
+        end: { label: "India Gate, Delhi", geoposition: destination},
+        via: route.slice(currIndex).map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
         routeColor: "#0000FF",
