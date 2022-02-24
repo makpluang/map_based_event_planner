@@ -8,7 +8,6 @@ const PlaceCard = ({place,  upcomingId, id}) => {
     useEffect (()=>{
         if(id === upcomingId){
             const card = document.getElementById(`place-${id}`)
-            console.log(card)
             card.scrollIntoView()
         }
     },[id, upcomingId])

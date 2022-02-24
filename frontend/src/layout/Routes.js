@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import RouteCard from "../component/RouteCard"
 
 const Routes = () => {
-    const {route, upcomingId} = useSelector(state => state)
+    const {route, upcomingId, distances, currIndex } = useSelector(state => state)
     return (
         <Card className="route-column">
             <CardBody>
@@ -17,8 +17,8 @@ const Routes = () => {
 
                     </div>
                     <div className="route-info-col flex-grow-1">
-                    {route && route.map((dest) => 
-                    <RouteCard route={dest} key={dest._id} id ={dest._id} upcomingId={upcomingId} />  
+                    {route && route.map((dest, ind) => 
+                    <RouteCard route={dest} key={dest._id} id ={dest._id} upcomingId={upcomingId} data={(ind >= currIndex && distances.length) ? distances[ind-currIndex]: []}/>  
                     )} 
                     </div>
                 </div>

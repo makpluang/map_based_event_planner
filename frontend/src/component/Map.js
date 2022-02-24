@@ -9,33 +9,43 @@ const Map = () => {
   const dispatch = useDispatch();
 
   const {start, destination, currIndex, route} = useSelector(state => state)
-  // console.log(start, destination, route, "Map component")
   const [userLocation, setUserLocation] = useState();
 
   const failureCallBack = (error) => {
     console.log("Error ===>", error);
   };
 
-  // setInterval(()=> {
+  // const getLiveLocation = () => {
+  //   document.getElementById("geo0").click()
+  //   let curr_loc = window.MapmyIndia.current_location.join(",")
+  //    setInterval(()=> {
   //   dispatch(checkUpcomingPlace())
   // }, 5000)
+  // }
+
+  const checkCurrentLoc = () => {
+     setInterval(()=> {
+      document.getElementById("geo0").click()
+      let curr_loc = window.MapmyIndia.current_location.join(",")
+      setUserLocation(curr_loc)
+      let currentdate = new Date();
+      console.log(curr_loc, currentdate.getSeconds())
+      dispatch(checkUpcomingPlace(start, route, currIndex))
+  }, 10000)
+  }
 
   useEffect (()=>{
 
     const successCallBack = (position) => {
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
-      console.log(latitude+","+longitude, "map component");
       dispatch(getRandomPath(latitude+","+longitude))
     };
 
-    const options = { frequency: 3000 };
-
     if (window.navigator.geolocation) {
-      window.navigator.geolocation.watchPosition(
+      window.navigator.geolocation.getCurrentPosition(
         successCallBack,
         failureCallBack,
-        options
       );
     }
 
@@ -50,19 +60,18 @@ const Map = () => {
         hybrid: true,
       });
       setMap(mapObj);
-      console.log("map load")
+
     }
   }, [route, start]);
 
   useEffect(() => {
     if (map) {
-      // document.getElementById("geo0").click()
-      // let curr_loc = window.MapmyIndia.current_location.join(",")
+      checkCurrentLoc()
       window.MapmyIndia.direction({
         map,
         start: start,
         end: { label: "India Gate, Delhi", geoposition: destination},
-        via: route.slice(currIndex).map((loc)=> {
+        via: route.map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
         routeColor: "#0000FF",
@@ -70,7 +79,7 @@ const Map = () => {
         callback: () => console.log,
       });
     }
-  }, [map, start, destination, route]);
+  }, [map, start, destination, route, currIndex]);
 
   return <div className="mapContainer">
   <div id="map"></div>;

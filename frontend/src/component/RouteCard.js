@@ -3,13 +3,10 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDiamondTurnRight } from '@fortawesome/free-solid-svg-icons'
 
-const RouteCard = ({route, upcomingId, id}) => {
-    console.log(id, upcomingId)
-
+const RouteCard = ({route, upcomingId, id, data}) => {
     useEffect (()=>{
         if(id === upcomingId){
             const card = document.getElementById(`route-${id}`)
-            console.log(card)
             card.scrollIntoView()
         }
     },[id, upcomingId])
@@ -26,8 +23,8 @@ const RouteCard = ({route, upcomingId, id}) => {
                     {route.title}
                 </CardTitle>
                 <CardText className="text-muted">
-                    <h6>Distance: </h6>
-                    <h6>Estimated Arrival:</h6>
+                    <h6>Distance: {data.distance}</h6>
+                    <h6>Estimated Arrival: {data.duration}</h6>
         
                 </CardText>
             </CardBody>
