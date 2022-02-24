@@ -51,22 +51,28 @@ export const checkUpcomingPlace = (start, routes, currIndex) => async(dispatch) 
     // });
     
     // console.log()
+
     const {data} = await axios.get(`http://localhost:3000/api/distance/multi/start/gurgaon/end/Kurukshetra/Mumbai/Chandigarh/`)
-    console.log(data)
+    console.log(data, "api response")
     
+    let nextPlace = false
     const distances = []
     const distanceArr= data.rows[0].elements
     for (let i =0; i < distanceArr.length; i++){
-       // console.log(distanceArr[i].distance.text, distanceArr[i].duration.text)
-       const dist = Number(distanceArr[i].distance.text.split[0]) * 1.6
-       const duration = Number(distanceArr[i].duration.text.split[0]) 
-        distances.push({dist, duration })
+       console.log(distanceArr[i].distance.text, distanceArr[i].duration.text)
+       const dist = Number(distanceArr[i].distance.text.split(" ")[0]) * 1.6
+       const duration = distanceArr[i].duration.text
+       distances.push({dist, duration })
+
+        if(dist <= 20) nextPlace = true;
     }
 
     console.log(distances, "distances")
 
-    //dispatch(setUpcomingPlace())
     dispatch(updateDistance(distances))
+
+    if(nextPlace)
+        dispatch(setUpcomingPlace())
 
 
 }

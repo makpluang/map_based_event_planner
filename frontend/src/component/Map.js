@@ -24,14 +24,14 @@ const Map = () => {
   // }
 
   const checkCurrentLoc = () => {
-     setInterval(()=> {
+    // setInterval(()=> {
       document.getElementById("geo0").click()
       let curr_loc = window.MapmyIndia.current_location.join(",")
       setUserLocation(curr_loc)
       let currentdate = new Date();
       console.log(curr_loc, currentdate.getSeconds())
       dispatch(checkUpcomingPlace(start, route, currIndex))
-  }, 10000)
+ // }, 100000)
   }
 
   useEffect (()=>{
