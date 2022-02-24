@@ -8,6 +8,7 @@ class BadRequest extends CustomError {
         const proto = Object.getPrototypeOf(this);
         proto.name = meta.name || 'BadRequest';
     }
+
 }
 
 module.exports = BadRequest;

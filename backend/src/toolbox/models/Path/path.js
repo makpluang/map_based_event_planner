@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const path_schema = new mongoose.Schema(
+const pathSchema = new mongoose.Schema(
 {
     route: 
     [
@@ -22,7 +22,7 @@ const path_schema = new mongoose.Schema(
     }
 });
 
-Path= mongoose.model("Path", path_schema);
+Path= mongoose.model("Path", pathSchema);
 
 
 module.exports = Path;

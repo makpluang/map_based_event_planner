@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const checkpoint_schema = new mongoose.Schema(
+const checkpointSchema = new mongoose.Schema(
 {
     lattitude: 
     {
@@ -53,4 +53,4 @@ const checkpoint_schema = new mongoose.Schema(
     }
 });
 
-module.exports = mongoose.model("Checkpoint", checkpoint_schema);
+module.exports = mongoose.model("Checkpoint", checkpointSchema);

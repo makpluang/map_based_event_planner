@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "distance-matrix-api": "^1.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "redis": "^4.0.4"
   }
 }

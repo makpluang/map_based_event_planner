@@ -9,9 +9,11 @@
  const router = require("express").Router();
  const Errors=require('../../toolbox/errors')
  const newDistances=require('../../wrappers/Nodejs-Distance-Matrix-Wrapper/index')
- var distance = require('distance-matrix-api');
+ let distance = require('distance-matrix-api');
  const config=require('../../config/index')
  distance.key(config.DistanceMatrixKey);
+ const  { BootcampProjectCache, redisClient }=require('../../wrappers/bootcamp-project-cache/bootcampCache')
+
  distance.units('imperial');
  const {
     BadRequest, STATUS_CODES
@@ -19,73 +21,99 @@
  
  
 
- router.get('/:start/:end',async (req,res)=>{
+ router.get('/:start/:end',async (req,res,next)=>{
      try{
-         const startloc=req.params.start;
-         const endloc=req.params.end;
-         
-         const newvalue=newDistances(startloc,endloc)
-        newvalue.then((val)=>{
-            res.send(val)
-        }).catch((err)=>{
-            throw err;
-        })
+            const startLocation=req.params.start;
+            const endLocation=req.params.end;
+            let key = startLocation.concat("_distance_", endLocation);
+            const toBeSendFromCache=await BootcampProjectCache.getCacheByKey(key);
+            console.log(toBeSendFromCache)
+            if(toBeSendFromCache)
+            {
+                console.log("I am returning from cache")
+                res.send(JSON.parse(toBeSendFromCache))
+            }
+            else{
+
+                const newValue=newDistances(startLocation,endLocation)
+                newValue.then((val)=>{
+                  redisClient.set(key, JSON.stringify(val))
+                  console.log("I am calling API ,but I will save for future need")
+                    res.send(val)
+                    
+                })
+                .catch((err)=>{
+                    throw err;
+                })
+                
+            }
+           
+            
+           
+       
      }
      catch(err){
-
-        throw new BadRequest('server error!',STATUS_CODES.INTERNAL_SERVER_ERROR)
+        return next(err)
      }
      
     
  })
  
-router.get('/multi/(:arr)*',(req,res)=>{
+router.get('/multi/(:arr)*',async (req,res,next)=>{
 
     try{
-            var params = [req.params.arr].concat(req.params[0].split('/').slice(1));
+            let params = [req.params.arr].concat(req.params[0].split('/').slice(1));
             params.shift();
-            var start=[];
-            var endval=[];
-            for(var i=0;i<params.length;i++)
+            let startContainer=[];
+            let endContainer=[];
+            let i=0;
+            let newkey="";
+            for(i=0;i<params.length;i++)
             {
                 if(params[i]=='end')
                 {
                     break;
                 }
-                start.push(params[i])
+                startContainer.push(params[i])
+                newkey= newkey.concat(params[i]);
             }
-            for(var j=i+1;j<params.length;j++){
-                endval.push(params[j]);
+            newkey= newkey.concat("_distance_");
+            for(let j=i+1;j<params.length;j++){
+                endContainer.push(params[j]);
+                 newkey=newkey.concat(params[j]);
             }
-        
-            distance.matrix(start, endval,function (err, distances) {
-                if (err) {
-                console.log(err);
+           
+            const toBeSendFromCache=await BootcampProjectCache.getCacheByKey(newkey);
+            if(toBeSendFromCache)
+            {
+                console.log("I am returning from cache")
+                res.send(JSON.parse(toBeSendFromCache))
+            }else
+            {
 
-                    res.send('oops,something went wrong')
-                }
-                if(!distances) {
-                    console.log('no distances');
-                    res.send('Check you ,have entered the start and end locations correctly')
-                }
-                if (distances.status == 'OK') {
-                    
-                
-                    res.send(distances)
-                }
-                
-        
+
+                distance.matrix(startContainer, endContainer,function (err, distances) {
+                    if (err) {
+                    console.log(err);
+
+                    throw BadRequest('OOps ,something went wrong towards Distance matrix APIs',STATUS_CODES.INTERNAL_SERVER_ERROR)
+                    }
+                    if(!distances) {
+                        console.log('no distances');
+                        throw BadRequest('Check you ,have entered the startContainer and end locations correctl',STATUS_CODES.INTERNAL_SERVER_ERROR)
+                    }
+                    if (distances.status == 'OK') {
+                        
+                         redisClient.set(newkey, JSON.stringify(distances))
+                        console.log("I am calling API ,but I will save for future need")
+                        res.send(distances)
+                    }
             });
+            }
             
-      
     }
     catch(err){
-
-       throw new BadRequest('server error!',STATUS_CODES.INTERNAL_SERVER_ERROR)
+            return next(err)
     }
-
-
-   
 })
  module.exports = router;
-//http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/UttarPradesh

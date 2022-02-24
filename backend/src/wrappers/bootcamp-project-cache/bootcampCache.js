@@ -1,15 +1,18 @@
-/*
 
-this file will keep the logic of redish cache
-I have to implement the logic as
-suppose the some start and destination places are getting visiting again and again
-so what we can do 
-we are getting dwaypoints as object
-now to cache in redish
+const redis = require('redis');
+const config = require('../../config/index');
+const redisClient = redis.createClient({
+  socket: {
+    host: config.REDIS_HOST,
+    port: config.REDIs_PORT
+  }
+});
 
-my key will be 
-my_key="start+end"
-my_value={}
-
-in the form data will be saved in the cache
-*/
+redisClient.connect();
+const BootcampProjectCache = {
+  getCacheByKey: async(key) => {
+    const redis_data = await redisClient.get(key);
+    return redis_data;
+  }
+};
+module.exports = { BootcampProjectCache, redisClient };

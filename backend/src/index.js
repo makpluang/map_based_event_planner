@@ -2,20 +2,18 @@ const express = require('express');
 const app = express();
 const allRoutes=require('./routes/index')
 const config=require('../src/config')
-const cors = require('cors')
+const customErrorHandler=require('./middleware/errorHandler/index')
 
-//database connections
+
 require('./db/mongoose');
 
 
 
-//middlwares
-app.use(cors())
+
 app.use(express.json());
-app.use(allRoutes)
+app.use('/api',allRoutes)
+app.use(customErrorHandler)
 
 
-
-//listening to server 
 app.listen(config.PORT, () => console.log(`Server up and running on ${config.PORT}`));
 
