@@ -45,14 +45,14 @@ export const checkUpcomingPlace = (start, routes, currIndex) => async(dispatch) 
 
      console.log(start, routes, currIndex, "action check upcoming place")
 
-    // let url = `${API}distance/multi/start/gurgaon/end/`
-    // routes.slice(currIndex).forEach(pos => {
-    //     url+= `${pos.title}/` 
-    // });
+    let url = `${API}distance/multi/start/gurgaon/end/`
+    routes.slice(currIndex).forEach(pos => {
+        url+= `${pos.title}/` 
+    });
     
     // console.log()
 
-    const {data} = await axios.get(`http://localhost:3000/api/distance/multi/start/gurgaon/end/Kurukshetra/Mumbai/Chandigarh/`)
+    const {data} = await axios.get(`${url}`)
     console.log(data, "api response")
     
     let nextPlace = false
@@ -70,6 +70,8 @@ export const checkUpcomingPlace = (start, routes, currIndex) => async(dispatch) 
     console.log(distances, "distances")
 
     dispatch(updateDistance(distances))
+
+
 
     if(nextPlace)
         dispatch(setUpcomingPlace())

@@ -23,33 +23,26 @@ const Map = () => {
   // }, 5000)
   // }
 
-  const checkCurrentLoc = () => {
-    // setInterval(()=> {
-      document.getElementById("geo0").click()
-      let curr_loc = window.MapmyIndia.current_location.join(",")
-      setUserLocation(curr_loc)
-      let currentdate = new Date();
-      console.log(curr_loc, currentdate.getSeconds())
-      dispatch(checkUpcomingPlace(start, route, currIndex))
- // }, 100000)
-  }
+
 
   useEffect (()=>{
 
     const successCallBack = (position) => {
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
-      dispatch(getRandomPath(latitude+","+longitude))
+      if(!route.length){
+        dispatch(getRandomPath(latitude+","+longitude))
+      }  
     };
 
     if (window.navigator.geolocation) {
-      window.navigator.geolocation.getCurrentPosition(
+      window.navigator.geolocation.watchPosition(
         successCallBack,
         failureCallBack,
       );
     }
 
-  },[dispatch])
+  },[dispatch, route.length])
 
   useEffect(() => {
     if(route.length){
@@ -66,7 +59,6 @@ const Map = () => {
 
   useEffect(() => {
     if (map) {
-      checkCurrentLoc()
       window.MapmyIndia.direction({
         map,
         start: start,
@@ -80,6 +72,19 @@ const Map = () => {
       });
     }
   }, [map, start, destination, route, currIndex]);
+
+  useEffect (()=>{
+    if(map){
+      // setInterval(()=> {
+        document.getElementById("geo0").click()
+        let curr_loc = window.MapmyIndia.current_location.join(",")
+        setUserLocation(curr_loc)
+        let currentdate = new Date();
+        console.log(curr_loc, currentdate.getSeconds())
+        dispatch(checkUpcomingPlace(start, route, currIndex))
+   // }, 100000)
+    }
+  }, [map, userLocation, currIndex, start, route, dispatch])
 
   return <div className="mapContainer">
   <div id="map"></div>;
