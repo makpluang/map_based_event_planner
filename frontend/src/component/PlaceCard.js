@@ -1,12 +1,19 @@
-import React from "react"
+import React, { useEffect , useCallback} from "react"
 import { Card, CardBody, CardImg, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-const PlaceCard = ({place,  upcomingId}) => {
+const PlaceCard = ({place,  upcomingId, id}) => {
+
+    useEffect (()=>{
+        if(id === upcomingId){
+            const card = document.getElementById(`place-${id}`)
+            card.scrollIntoView()
+        }
+    },[id, upcomingId])
 
     return (
-        <Card className="place-card">
+        <Card className={`place-card ${id === upcomingId && `active`}`} id={`place-${id}`} >
             <CardBody>
                 <CardImg
                     alt="Card image cap"

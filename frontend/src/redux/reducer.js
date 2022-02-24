@@ -1,6 +1,7 @@
 import {
     GET_RANDOM_PATH,
-    SET_UPCOMING_PLACE
+    SET_UPCOMING_PLACE,
+    UPDATE_UPCOMING_DISTANCE
 } from "./constant"
 
 const initialState = {
@@ -8,13 +9,13 @@ const initialState = {
     destination: "",
     route:[],
     upcomingId: 0,
-    currIndex : 0
+    currIndex : 0,
+    distances:[]
 }
 
 const pathReducer = (state= initialState, action) => {
     switch(action.type){
         case GET_RANDOM_PATH: {
-            console.log(action.start)
             return{
                 ...state,
                 start: action.start,
@@ -30,7 +31,7 @@ const pathReducer = (state= initialState, action) => {
             const newRoute = state.route.map((checkpoint, ind) => {
                 return {
                     ...checkpoint,
-                    traversed : (ind ===state.currIndex) ? true: false
+                    traversed : (ind ===state.currIndex) ? true: checkpoint.traversed
                 }
             })
             console.log("set upcoming place", nextIndex)
@@ -41,6 +42,13 @@ const pathReducer = (state= initialState, action) => {
                 upcomingId: state.route[nextIndex]._id
             }
         }
+
+        case UPDATE_UPCOMING_DISTANCE: 
+        return {
+            ...state,
+            distances : action.payload
+        }
+
         default: return state
     }
 }
