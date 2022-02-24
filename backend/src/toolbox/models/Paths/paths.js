@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const allpaths_schema = new mongoose.Schema(
+const completePathSchema = new mongoose.Schema(
 {
     routes: 
     [
@@ -8,7 +8,7 @@ const allpaths_schema = new mongoose.Schema(
     ]
 });
 
-AllPaths = mongoose.model("Allpaths", allpaths_schema);
+AllPaths = mongoose.model("Allpaths", completePathSchema);
 
 
 
