@@ -69,7 +69,7 @@ const getPathById=async(req,res)=>{
         const decode = jwt.verify(token,config.JWT_TOKEN_SECRET);
         const user = await User.findById({ _id: decode._id });
         if (user.issuperAdmin) {
-          try {
+          
                 const isPathExist=await Path.findById(req.params.id)
                 if(isPathExist.isdeleted)
                 {
@@ -80,9 +80,7 @@ const getPathById=async(req,res)=>{
                     return res.send(isPathExist);
                 }
           
-          } catch (err) {
-            throw new CustomError('Looks like,No checkpoints available to create path !',STATUS_CODES.NOT_FOUND)
-          }
+      
         } else {
         throw new UnAuthorisedError("Unauthorized user !",STATUS_CODES.UNAUTHENTICATED_REQUEST)
     }
