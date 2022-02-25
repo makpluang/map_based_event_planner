@@ -45,12 +45,12 @@ export const checkUpcomingPlace = (start, routes, currIndex) => async(dispatch) 
 
      console.log(start, routes, currIndex, "action check upcoming place")
 
-    let url = `${API}distance/multi/start/gurgaon/end/`
+    let url = `${API}distance/multi/start/${start}/end/`
     routes.slice(currIndex).forEach(pos => {
         url+= `${pos.title}/` 
     });
     
-    // console.log()
+     console.log(url)
 
     const {data} = await axios.get(`${url}`)
     console.log(data, "api response")
