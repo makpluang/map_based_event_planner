@@ -4,10 +4,6 @@ const pathSchema = new mongoose.Schema(
 {
     route: 
     [
-       // {
-          //type: mongoose.Schema.Types.ObjectId,
-          //ref: "Checkpoint"
-        //}
         Object
     ],
     isassigned:

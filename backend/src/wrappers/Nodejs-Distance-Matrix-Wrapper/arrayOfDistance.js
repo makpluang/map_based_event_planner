@@ -9,13 +9,9 @@ distance.key(config.DistanceMatrixKey);
 distance.units('imperial');
 
 function callback  (startloc,endloc){
-         
     var origins = startloc;
     var destinations = endloc;
-   
-    
-
-    distance.matrix(origins, destinations,function (err, distances) {
+   distance.matrix(origins, destinations,function (err, distances) {
         if (err) {
             return console.log(err);
         }

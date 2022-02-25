@@ -4,7 +4,7 @@ const config = require('../../config/index');
 const redisClient = redis.createClient({
   socket: {
     host: config.REDIS_HOST,
-    port: config.REDIs_PORT
+    port: config.REDIS_PORT
   }
 });
 

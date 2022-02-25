@@ -6,12 +6,12 @@ const env = require(envFile);
 
 const config = {
     env: env.ENV,
-    PORT: env.PORT,
+    PORT: process.env.PORT || 3000,
     JWT_TOKEN_SECRET: env.JWT_TOKEN_SECRET,
     Mongo_URI:env.Mongo_URI,
     DistanceMatrixKey:env.DistanceMatrixKey,
-    REDIS_HOST:env.REDIS_HOST,
-    REDIs_PORT:env.REDIS_PORT
+    REDIS_HOST:process.env.REDIS_HOST || '127.0.0.1',
+    REDIS_PORT:process.env.REDIS_PORT || 6379
 };
 
 module.exports = { ...config };

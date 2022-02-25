@@ -6,17 +6,13 @@ var newDistance;
 
 
 const distance_matrix_wrapper=async (startloc,endloc)=>{
-         
-    
-    var origins = [startloc];
-    var destinations = [endloc];
- 
+         var origins = [startloc];
+        var destinations = [endloc];
 distance.matrix(origins, destinations, function (err, distances) {
     if (!err)
         newDistance=distances;
 })
-
-   return newDistance;
+return newDistance;
 
 }
 module.exports=distance_matrix_wrapper

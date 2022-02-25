@@ -208,6 +208,33 @@ http://localhost:3000/api/paths/add/:params
 /*
 
 new end point 
+http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/UttarPradesh
+http://localhost:3000/api/distance/Delhi/Noida
+http://localhost:3000/api/paths/pathtofollow/Delhi/Mumbai
+http://localhost:3000/api/admin/621757e26c0c90a7e1a713f7
+*/
 
-http://localhost:3000/api/distance/multi/start/{}/{}/{}/end/{}/{}/{}
+
+/*
+1. main end points needed for frontend Use
+First create path for user 
+input->(start,end)
+http://localhost:3000/api/paths/pathtofollow/Dudhi/Patna
+
+Now I have path with checkpoints
+
+2. Now I need info of person who added the checkpoints
+Input->{user_id}
+http://localhost:3000/api/admin/621757e26c0c90a7e1a713f7
+
+3.Now I need travelling time and distance between two points
+Input->{start,end}
+http://localhost:3000/api/distance/Dudhi/Patna
+
+4. But I am making API call often ,can we get array of distance?
+
+Input->{startarraylocations,endarraylocations}
+http://localhost:3000/api/distance/multi/start/Dudhi/end/Gurugram/Delhi/Patna
+
+
 */
