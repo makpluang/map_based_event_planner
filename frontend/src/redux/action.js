@@ -8,7 +8,18 @@ import {
 
 const API = "http://localhost:3000/api/"
 
+const lastPlace = {
+    _id : 1,
+    lattitude: "19.075983",
+    longitude: "72.877655",
+    title: "Mumbai",
+    about: "Mumbai is home to three UNESCO World Heritage Sites: the Elephanta Caves, Chhatrapati Shivaji Maharaj Terminus, and the city's distinctive ensemble of Victorian and Art Deco buildings designed in the 19th and 20th centuries.",
+    rating: 9,
+    image: "https://cdn.britannica.com/26/84526-050-45452C37/Gateway-monument-India-entrance-Mumbai-Harbour-coast.jpg",
+  }
+
 const setRandomPath = (data, start)=>{
+    data.push(lastPlace)
     return {
         type: GET_RANDOM_PATH,
         path: data,
@@ -16,16 +27,18 @@ const setRandomPath = (data, start)=>{
     }
 }
 
-const setUpcomingPlace = () =>{
+const setUpcomingPlace = (location) =>{
     return{
         type: SET_UPCOMING_PLACE,
+        currPosition: location
     }
 }
 
-const updateDistance = (distance) => {
+const updateDistance = (distance, location) => {
     return {
         type: UPDATE_UPCOMING_DISTANCE ,
-        payload: distance
+        payload: distance,
+        currPosition: location
     }
 }
 
@@ -45,36 +58,32 @@ export const checkUpcomingPlace = (start, routes, currIndex, userLocation) => as
 
     console.log(start, routes, currIndex, "action check upcoming place")
    
-    let url = `${API}distance/multi/start/${start}/end/`
+    let url = `${API}distance/multi/start/${userLocation}/end/`
     routes.slice(currIndex).forEach(pos => {
         url+= `${pos.title}/` 
     });
     
-    console.log(url)
+     console.log(url)
 
     const {data} = await axios.get(`${url}`)
-    console.log(data, "api response")
     
-    let nextPlace = false
     const distances = []
     const distanceArr= data.rows[0].elements
     for (let i =0; i < distanceArr.length; i++){
-       console.log(distanceArr[i].distance.text, distanceArr[i].duration.text)
        const dist = Number(distanceArr[i].distance.text.split(" ")[0]) * 1.6
        const duration = distanceArr[i].duration.text
        distances.push({dist, duration })
 
-        if(dist <= 20) nextPlace = true;
     }
 
-    console.log(distances, "distances")
+    // console.log(distances)
 
-    dispatch(updateDistance(distances))
+    dispatch(updateDistance(distances, userLocation))
 
 
 
-    if(nextPlace && start!== userLocation ){
-        dispatch(setUpcomingPlace())
+    if(distances.length >=2 && distances[0].dist > distances[1].dist ){
+        dispatch(setUpcomingPlace(userLocation))
     }
         
 
