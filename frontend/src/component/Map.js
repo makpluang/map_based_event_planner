@@ -62,7 +62,7 @@ const Map = () => {
       window.MapmyIndia.direction({
         map,
         start: start,
-        end: { label: "India Gate, Delhi", geoposition: destination},
+        end: { label: "Mumbai", geoposition: destination},
         via: route.map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
@@ -79,9 +79,11 @@ const Map = () => {
         document.getElementById("geo0").click()
         let curr_loc = window.MapmyIndia.current_location.join(",")
         setUserLocation(curr_loc)
-        let currentdate = new Date();
-        console.log(curr_loc, currentdate.getSeconds())
-        dispatch(checkUpcomingPlace(start, route, currIndex))
+        // let currentdate = new Date();
+        // console.log(curr_loc, currentdate.getSeconds())
+        console.log(route, currIndex , "map")
+        if(route.length) 
+          dispatch(checkUpcomingPlace(start, route, currIndex, curr_loc))
    // }, 100000)
     }
   }, [map, userLocation, currIndex, start, route, dispatch])

@@ -19,7 +19,7 @@ const pathReducer = (state= initialState, action) => {
             return{
                 ...state,
                 start: action.start,
-                destination: "1T182A",
+                destination: "19.075983,72.877655",
                 route: action.path,
                 upcomingId: action.path[state.currIndex]._id
             }
