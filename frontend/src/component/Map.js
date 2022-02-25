@@ -15,22 +15,12 @@ const Map = () => {
     console.log("Error ===>", error);
   };
 
-  let count = 1
-
   useEffect (()=>{
 
     const successCallBack = (position) => {
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
       console.log(latitude+","+longitude, "watch")
-      //let curr_loc = latitude+","+longitude
-      // if(map){
-      //   document.getElementById("geo0").click()
-      //   curr_loc = window.MapmyIndia.current_location.join(",")
-      // }
-      
-      // console.log(count++, "trigger distance calculation")
-      // dispatch(checkUpcomingPlace(start, route, currIndex, curr_loc))
       if(!route.length){
         dispatch(getRandomPath(latitude+","+longitude))
       }  
@@ -43,7 +33,7 @@ const Map = () => {
       );
     }
 
-  },[dispatch, route.length, currIndex, start, route, count, map, userLocation])
+  },[dispatch, route.length, map])
 
   useEffect(() => {
     if(route.length){
@@ -74,24 +64,18 @@ const Map = () => {
       });
     }
   }, [map, start, destination, route, currIndex]);
+  
 
   useEffect (()=>{
+    console.log("map use effect")
     if(map){
     document.getElementById("geo0").click()
-   let curr_loc = window.MapmyIndia.current_location.join(",")
-    dispatch(checkUpcomingPlace(start, route, currIndex, curr_loc))
+    // let curr_loc = window.MapmyIndia.current_location.join(",")
+    console.log(userLocation, "use effect")
+    dispatch(checkUpcomingPlace(start, route, currIndex, userLocation))
     }
   },[map, userLocation, start, currIndex, route, dispatch])
 
-  // useEffect (()=>{
-  //   if(map){
-  //       document.getElementById("geo0").click()
-  //       let curr_loc = window.MapmyIndia.current_location.join(",")
-  //       //setUserLocation(curr_loc)
-  //       console.log(count++, "trigger distance calculation")
-  //       dispatch(checkUpcomingPlace(start, route, currIndex, curr_loc))
-  //   }
-  // }, [map, userLocation, currIndex, start, route, dispatch, count])
 
   return <div className="mapContainer">
   <div id="map"></div>;

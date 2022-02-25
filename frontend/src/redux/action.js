@@ -73,19 +73,16 @@ export const checkUpcomingPlace = (start, routes, currIndex, userLocation) => as
        const dist = Number(distanceArr[i].distance.text.split(" ")[0]) * 1.6
        const duration = distanceArr[i].duration.text
        distances.push({dist, duration })
-
     }
-
-    // console.log(distances)
-
+   
     dispatch(updateDistance(distances, userLocation))
+    console.log(distances, currIndex, "current action value")
 
-
+    if(currIndex === 0 && start === userLocation ) distances.unshift({ dist: 0, duration: 0})
 
     if(distances.length >=2 && distances[0].dist > distances[1].dist ){
+        console.log(distances[0].dist, distances[1].dist, "Comparison_____" )
         dispatch(setUpcomingPlace(userLocation))
     }
-        
-
 
 }
