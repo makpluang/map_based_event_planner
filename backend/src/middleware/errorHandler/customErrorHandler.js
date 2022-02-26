@@ -1,7 +1,4 @@
-
-   async function apiErrorHandler(err, req, res, next) {
-  
-
+async function apiErrorHandler(err, req, res) {
   if (err) {
     res.status(err.statusCode || 500).json(err.message);
     return;
@@ -11,4 +8,3 @@
 }
 
 module.exports = apiErrorHandler;
-

@@ -1,56 +1,57 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const checkpointSchema = new mongoose.Schema(
-{
-    lattitude: 
+  {
+    lattitude:
     {
-        type: String,
-        require: "Content is Required"
+      type: String,
+      require: 'Content is Required',
     },
-    longitude: 
+    longitude:
     {
-        type: String,
-        require: "Content is Required"
-    
+      type: String,
+      require: 'Content is Required',
+
     },
     title:
     {
-        type: String,
-        require: "Content is Required"
+      type: String,
+      require: 'Content is Required',
     },
     about:
     {
-        type: String,
-        require: "Content is Required"
+      type: String,
+      require: 'Content is Required',
     },
     addedby: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
-    rating:{
-        type:Number
+    rating: {
+      type: Number,
     },
-    date:{
-         type: Date, default: Date.now 
-        },
+    date: {
+      type: Date, default: Date.now,
+    },
     meta: [
-        Object
+      Object,
     ],
     image:
     {
-        type:String
+      type: String,
     },
     isassigned:
     {
-        type: Boolean, 
-        default: false
-        
+      type: Boolean,
+      default: false,
+
     },
-    isdeleted:{
+    isdeleted: {
 
-        type: Boolean, 
-        default: false
-    }
-});
+      type: Boolean,
+      default: false,
+    },
+  },
+);
 
-module.exports = mongoose.model("Checkpoint", checkpointSchema);
+module.exports = mongoose.model('Checkpoint', checkpointSchema);
