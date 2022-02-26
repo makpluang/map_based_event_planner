@@ -1,16 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const completePathSchema = new mongoose.Schema(
-{
-    routes: 
+  {
+    routes:
     [
-        Object
-    ]
-});
+      Object,
+    ],
+  },
+);
 
-AllPaths = mongoose.model("Allpaths", completePathSchema);
-
-
-
+const AllPaths = mongoose.model('Allpaths', completePathSchema);
 
 module.exports = AllPaths;

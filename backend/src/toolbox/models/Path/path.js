@@ -1,24 +1,24 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const pathSchema = new mongoose.Schema(
-{
-    route: 
+  {
+    route:
     [
-        Object
+      Object,
     ],
     isassigned:
     {
-        type: Boolean, 
-        default: false
-        
+      type: Boolean,
+      default: false,
+
     },
-    isdeleted:{
-        type: Boolean, 
-        default: false
-    }
-});
+    isdeleted: {
+      type: Boolean,
+      default: false,
+    },
+  },
+);
 
-Path= mongoose.model("Path", pathSchema);
-
+const Path = mongoose.model('Path', pathSchema);
 
 module.exports = Path;

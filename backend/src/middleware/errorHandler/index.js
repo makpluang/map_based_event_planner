@@ -1,1 +1,1 @@
-module.exports=require('./customErrorHandler')
+module.exports = require('./customErrorHandler');
