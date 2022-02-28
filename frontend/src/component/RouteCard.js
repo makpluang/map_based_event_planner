@@ -23,7 +23,7 @@ const RouteCard = ({route, upcomingId, id, data}) => {
                     {route.title}
                 </CardTitle>
                 <CardText className="text-muted">
-                    <h6>Distance: {Math.round(data ? data.dist : "--")} kms</h6>
+                    <h6>Distance: {data ? `${Math.round(data.dist)} kms` : "--"}  </h6>
                     <h6>Estimated Arrival: {data ? data.duration: "--"}</h6>
         
                 </CardText>

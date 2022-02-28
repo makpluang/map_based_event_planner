@@ -15,24 +15,18 @@ const Map = () => {
     console.log("Error ===>", error);
   };
 
-  // const getLiveLocation = () => {
-  //   document.getElementById("geo0").click()
-  //   let curr_loc = window.MapmyIndia.current_location.join(",")
-  //    setInterval(()=> {
-  //   dispatch(checkUpcomingPlace())
-  // }, 5000)
-  // }
-
-
-
   useEffect (()=>{
 
     const successCallBack = (position) => {
+      if(position.coords){
+        console.log(position.coords, "position coord ----")
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
+      console.log(latitude+","+longitude, "watch")
       if(!route.length){
         dispatch(getRandomPath(latitude+","+longitude))
       }  
+    }
     };
 
     if (window.navigator.geolocation) {
@@ -42,11 +36,12 @@ const Map = () => {
       );
     }
 
-  },[dispatch, route.length])
+  },[dispatch, route.length, map])
 
   useEffect(() => {
-    if(route.length){
-      var centre = new window.L.LatLng(start.split(",")[0], start.split(",")[1]);
+    if(route.length && start){
+      console.log(start, " start value")
+      var centre = new window.L.LatLng(Number(start.split(",")[0]), Number(start.split(",")[1]));
       let mapObj = new window.MapmyIndia.Map("map", {
         center: centre,
         zoomControl: true,
@@ -63,7 +58,7 @@ const Map = () => {
         map,
         start: start,
         end: { label: "Mumbai", geoposition: destination},
-        via: route.map((loc)=> {
+        via: route.slice(currIndex).map((loc)=> {
           return  {id: loc._id, label: loc.title, geoposition: `${loc.lattitude},${loc.longitude}`}
          }),
         routeColor: "#0000FF",
@@ -73,20 +68,17 @@ const Map = () => {
     }
   }, [map, start, destination, route, currIndex]);
 
+
   useEffect (()=>{
+    console.log("map use effect")
     if(map){
-      // setInterval(()=> {
-        document.getElementById("geo0").click()
-        let curr_loc = window.MapmyIndia.current_location.join(",")
-        setUserLocation(curr_loc)
-        // let currentdate = new Date();
-        // console.log(curr_loc, currentdate.getSeconds())
-        console.log(route, currIndex , "map")
-        if(route.length) 
-          dispatch(checkUpcomingPlace(start, route, currIndex, curr_loc))
-   // }, 100000)
+    document.getElementById("geo0").click()
+    // let curr_loc = window.MapmyIndia.current_location.join(",")
+    console.log(userLocation, "use effect")
+    dispatch(checkUpcomingPlace(start, route, currIndex, userLocation))
     }
-  }, [map, userLocation, currIndex, start, route, dispatch])
+  },[map, userLocation, start, currIndex, route, dispatch])
+
 
   return <div className="mapContainer">
   <div id="map"></div>;
