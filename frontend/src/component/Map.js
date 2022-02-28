@@ -18,12 +18,15 @@ const Map = () => {
   useEffect (()=>{
 
     const successCallBack = (position) => {
+      if(position.coords){
+        console.log(position.coords, "position coord ----")
       const { latitude, longitude } = position.coords;
       setUserLocation(latitude+","+longitude);
       console.log(latitude+","+longitude, "watch")
       if(!route.length){
         dispatch(getRandomPath(latitude+","+longitude))
       }  
+    }
     };
 
     if (window.navigator.geolocation) {
@@ -36,9 +39,9 @@ const Map = () => {
   },[dispatch, route.length, map])
 
   useEffect(() => {
-    if(route.length){
-      console.log(route)
-      var centre = new window.L.LatLng(start.split(",")[0], start.split(",")[1]);
+    if(route.length && start){
+      console.log(start, " start value")
+      var centre = new window.L.LatLng(Number(start.split(",")[0]), Number(start.split(",")[1]));
       let mapObj = new window.MapmyIndia.Map("map", {
         center: centre,
         zoomControl: true,
@@ -64,7 +67,7 @@ const Map = () => {
       });
     }
   }, [map, start, destination, route, currIndex]);
-  
+
 
   useEffect (()=>{
     console.log("map use effect")

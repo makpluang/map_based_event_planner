@@ -39,14 +39,16 @@ const pathReducer = (state= initialState, action) => {
                 ...state,
                 route: newRoute,
                 currIndex: nextIndex,
-                upcomingId: state.route[nextIndex]._id
+                upcomingId: state.route[nextIndex]._id,
+                //start: action.currPosition
             }
         }
 
         case UPDATE_UPCOMING_DISTANCE: 
         return {
             ...state,
-            distances : action.payload
+            distances : action.payload,
+            //start: action.currPosition
         }
 
         default: return state
