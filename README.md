@@ -1,5 +1,5 @@
-# bootcamp_project
-This is repo is regarding the boocamp project
+# MAP BASED EVENT PLANNER
+
 
 # Publically available API
 https://bootcamppluangproject.herokuapp.com/api/paths/pathtofollow/{Start_Locatio}/{End_Location}
@@ -146,14 +146,4 @@ http://localhost:3000/api/distance/multi/start/Delhi/Mumbai/end/Maharastra/Uttar
 5. npm install
 6. now, npm start.
 
-
-## Note
-
-This repo has not been deployed, backend clone of this service has been deployed.
-As for deployement purpose we need to make some changed in repo ,as setup of config file so I avoided to play and deploy this repo.
-
-
-you are good to go.
-
-Thanks for visiting this repo.
 
